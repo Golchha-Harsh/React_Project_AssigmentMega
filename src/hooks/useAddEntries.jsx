@@ -81,7 +81,7 @@ const useAddEntry = (
   const {
     mutate: addEntry,
     isLoading: isSubmitting,
-    error: submissionError,
+    error: submissionError
   } = useMutation({
     //this is the actual logic behind api call
     mutationFn: async (newEntry) => {

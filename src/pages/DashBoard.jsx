@@ -5,15 +5,18 @@ import useAddEntry from "../hooks/useAddEntries";
 import useEntries from "../hooks/useEntries";
 
 const DashboardPage = () => {
-  //This  state value habdles entry form
+  //This  state value handles entry form
   const [name, setName] = useState("");
   const [technology, setTechnology] = useState("");
   const [company, setCompany] = useState("");
   const [description, setDescription] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
 
+
+
+
   //this line will call useEntries hook to fetch data as we know it is implemented by tanstack so it will
-//give isLoading isError Data error
+ //give isLoading isError Data error
   const { isLoading, isError, data: entries, error } = useEntries();
   //this is my anotheer custom hook and I am passing all setter function for the form field so that indirctly useAddEntry will edit states in the form
   const {isSubmitting, submissionError, handleSubmit } = useAddEntry(
