@@ -12,14 +12,12 @@ const DashboardPage = () => {
   const [description, setDescription] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
 
-
-
-
   //this line will call useEntries hook to fetch data as we know it is implemented by tanstack so it will
- //give isLoading isError Data error
-  const { isLoading, isError, data: entries, error } = useEntries();
-  //this is my anotheer custom hook and I am passing all setter function for the form field so that indirctly useAddEntry will edit states in the form
-  const {isSubmitting, submissionError, handleSubmit } = useAddEntry(
+  //give isLoading isError Data error isLoading: true while fetching data isError: true if an error occurred error holds error obj
+  const { isLoading, isError, data: entries, error } = useEntries();//to fetch entries
+  
+  //this is my another custom hook and I am passing all setter function for the form field so that indirectly useAddEntry will edit states in the form
+  const { isSubmitting, submissionError, handleSubmit } = useAddEntry(
     setName,
     setTechnology,
     setCompany,
@@ -28,9 +26,9 @@ const DashboardPage = () => {
   );
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">
-        Dashboard Page
+    <div className="p-6 max-w-6xl mx-auto">
+      <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
+        Dashboard
       </h1>
 
       <NewEntryForm
@@ -48,7 +46,10 @@ const DashboardPage = () => {
         submissionError={submissionError}
       />
 
-      <h2 className="text-xl font-semibold mb-2">Existing Entries</h2>
+      <h2 className="text-2xl font-semibold mb-4 mt-10 text-gray-700">
+        Your Entries
+      </h2>
+
       <EntryList
         isLoading={isLoading}
         isError={isError}
@@ -60,3 +61,4 @@ const DashboardPage = () => {
 };
 
 export default DashboardPage;
+

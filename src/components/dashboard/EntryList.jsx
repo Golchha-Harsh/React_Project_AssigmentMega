@@ -1,4 +1,3 @@
-// src/components/dashboard/EntryList.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -16,15 +15,24 @@ const EntryList = ({ isLoading, isError, error, entries }) => {
   }
 
   return (
-    <ul className="list-disc pl-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {entries.map((entry) => (
-        <li key={entry.id}>
-          <Link to={`/dashboard/details/${entry.id}`} className="text-blue-500 hover:text-blue-700 hover:bg-blue-100 rounded px-2 py-1 ease-in-out ">
-            {entry.name}
-          </Link>
-        </li>
+        <Link
+          key={entry.id}
+          to={`/dashboard/details/${entry.id}`}
+          className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-200 p-5 hover:border-blue-500 hover:bg-blue-50"
+        >
+          <h3 className="text-xl font-bold text-gray-800 mb-2">{entry.name}</h3>
+          <p className="text-sm text-gray-600 mb-2">
+            <strong>Technology:</strong> {entry.technology}
+          </p>
+          <p className="text-sm text-gray-600 mb-2">
+            <strong>Company:</strong> {entry.company}
+          </p>
+          <p className="text-sm text-gray-500 truncate">{entry.description}</p>
+        </Link>
       ))}
-    </ul>
+    </div>
   );
 };
 

@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
   }
-
+//Dashboard is children
   return children;
 };
 

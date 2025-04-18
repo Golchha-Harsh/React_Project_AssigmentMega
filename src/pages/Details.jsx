@@ -15,7 +15,7 @@ const EntryDetailsPage = () => {
       setEntry(response.data);
       setLoading(false);
     } catch (err) {
-      setError("failed to load any entriess");
+      setError("failed to load any entriess",err);
       setLoading(false);
     }
   };
